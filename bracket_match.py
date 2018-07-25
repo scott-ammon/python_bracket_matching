@@ -33,7 +33,7 @@ def is_open_bracket(char):
       is_open_bracket = True
   return is_open_bracket
 
-# Determine if a matching open/close pair of parens
+# Determine if a matching open/close pair of brackets
 def is_a_pair(open_bracket, close_bracket):
   brackets = ['()','{}','[]']
   match = False
@@ -43,7 +43,7 @@ def is_a_pair(open_bracket, close_bracket):
         match = True
   return match
 
-# Main function that calls paren functions and stack
+# Main function that calls bracket functions and stack
 def bracket_match(input_string):
   chars = list(input_string)
   char_stack = Stack()
@@ -67,5 +67,32 @@ def bracket_match(input_string):
             return False
   
   return False if(char_stack.size() > 0) else True
-    
+
+# Test cases should return:
+
+# True
+print(bracket_match('abc(123)'))
+
+# False
+print(bracket_match('abc(123'))
+
+# True
+print(bracket_match('a[bc(123)]'))
+
+# False
+print(bracket_match('a[bc(12]3)'))
+
+# True
+print(bracket_match('a{b}{c(1[2]3)}'))
+
+# False
 print(bracket_match('a{b}{c(1}[2]3)'))
+
+# True
+print(bracket_match('()'))
+
+# False
+print(bracket_match('[]]'))
+
+# True
+print(bracket_match('abc123yay'))
